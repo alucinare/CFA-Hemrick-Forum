@@ -1,0 +1,24 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="message-show">
+    <h2><%= @message.title %></h2>
+    <p class="message-posted-by">Posted by <%= @message.user.email %><%= time_ago_in_words(@message.created_at) %> ago</p>
+    <!--  time stamp-->
+    <p class="message-desc"><%= @message.description %></p>
+
+    <h3>Comments:</h3>
+    <!-- the @message has already found the message for show and .comments is simply pulling up the comments in relation to that message -->
+    <%= render @message.comments %>
+
+    <h3 class="reply-to-msg">Reply to Message:</h3>
+    <%= render 'comments/form' %>
+    <div class="links btn-group">
+      <%= link_to "Back", root_path, class: "btn btn-default" %>
+      <% if user_signed_in? %>
+        <% if @message.user_id == current_user.id %>
+          <%= link_to "Edit", edit_message_path(@message), class: "btn btn-default" %>
+          <%= link_to "Delete", message_path(@message), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

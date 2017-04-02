@@ -1,0 +1,7 @@
+# the .find is like the params function in that it will find the message for the id that has been put into it, the params function is simply for whatever page it is on.
+
+@message.comments.find(1)
+
+  Comment Load (0.2ms)  SELECT  "comments".* FROM "comments" WHERE "comments"."message_id" = ? AND "comments"."id" = ? LIMIT ?  [["message_id", 5], ["id", 1], ["LIMIT", 1]]
+ => #<Comment id: 1, content: "This is from a comment partial that is being rende...", message_id: 5, user_id: 2, created_at: "2017-04-02 08:22:46", updated_at: "2017-04-02 08:22:46">
+2.4.0 :017 >

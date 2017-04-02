@@ -1,0 +1,20 @@
+<div class="comment">
+  <p class="comment-content"><%= comment.content %></p>
+  <p class="comment-posted-by">Posted by <%= comment.user.email %> <%= time_ago_in_words(comment.created_at)%> ago</p>
+
+  <!--
+  /messages/3/comments/1
+  comment.message corresponds to the message that the comments are for on the show page and will find the message that we are replying to.
+  comment.message gets /messages/3
+  comment represents the individual comment that is in relation to the message.
+  comment gets /comments/1
+  -->
+  <div class="links">
+    <% if user_signed_in? %>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to "Edit", edit_message_comment_path(comment.message, comment) %>
+        <%= link_to "Delete", message_comment_path(comment.message, comment), method: :delete, data: { confirm: "Are you sure?"} %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

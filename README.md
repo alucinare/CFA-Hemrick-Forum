@@ -4,7 +4,9 @@ A basic forumesque message board.
 
 ## About the Project
 
-I'm using this to get some more practice and to more clearly understand the development of a project from start to finish. It helps to see how other people implement a rails project and what steps they take to get it done. 
+I'm using this to get some more practice and to more clearly understand the development of a project from start to finish. It helps to see how other people implement a rails project and what steps they take to get it done.
+
+Here's the tutorial: https://www.youtube.com/watch?v=wODY11lM7wk
 
 This is a supplement to what I'm learing at Coder Factory.
 

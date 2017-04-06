@@ -1,0 +1,27 @@
+This is the link between User and Role
+
+last = User.last
+
+last will bring back the User.last object which is this:
+
+ => #<User id: 4, email: "test@subject.com`", created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">
+
+last.roles
+  Role Load (0.3ms)  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ?  [["user_id", 4]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<Role id: 1, name: "member", resource_type: nil, resource_id: nil, created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">, #<Role id: 1, name: "member", resource_type: nil, resource_id: nil, created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">]>
+
+ Here are db calls on the model ROLE
+
+ Role.last
+ Role Load (0.2ms)  SELECT  "roles".* FROM "roles" ORDER BY "roles"."id" DESC LIMIT ?  [["LIMIT", 1]]
+=> #<Role id: 1, name: "member", resource_type: nil, resource_id: nil, created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">
+2.4.0 :019 > Role.all
+ Role Load (0.3ms)  SELECT "roles".* FROM "roles"
+=> #<ActiveRecord::Relation [#<Role id: 1, name: "member", resource_type: nil, resource_id: nil, created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">]>
+
+Here's a db call with the MODERATOR as a 2nd role because the default role is MEMBER
+
+fifth.roles
+ Role Load (0.3ms)  SELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ?  [["user_id", 5]]
+
+=> #<ActiveRecord::Associations::CollectionProxy [#<Role id: 1, name: "member", resource_type: nil, resource_id: nil, created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">, #<Role id: 1, name: "member", resource_type: nil, resource_id: nil, created_at: "2017-04-06 09:42:06", updated_at: "2017-04-06 09:42:06">, #<Role id: 2, name: "moderator", resource_type: "Message", resource_id: nil, created_at: "2017-04-06 10:03:16", updated_at: "2017-04-06 10:03:16">]>

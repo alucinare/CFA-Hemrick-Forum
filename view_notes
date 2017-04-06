@@ -1,0 +1,9 @@
+Show and Comments view
+
+I was able to get the edit and delete buttons to show up in the comments and message SHOW view with this:
+
+<% if @message.user_id == current_user.id || current_user.roles.name == "Role" %>
+
+HOWEVER this isn't exactly what I want. I don't know why it is spitting out ROLE when I called the current_user.roles.name attribute. I thought it'd be spitting out Moderator, but it isn't.
+
+The funny thing is that this is also worknig for a USER I created that doesn't have any role associated with it. Therefore, it is buggy and not the right way to implement this solution. This is probably where pundit comes into it.

@@ -1,3 +1,23 @@
+ERB
+
+USER-------\\-/----Role
+|
+|
+|--\\--messages
+|       |
+|       |----\\--comments
+|
+|--\\--comments
+
+
+CALLBACK
+
+This allows an object to manipulated at different points of its lifecycle such as being created, updated, saved, validated, deleted, or loaded from the database.
+
+During the normal operation of a Rails application, objects may be created, updated, and destroyed. Active Record provides hooks into this object life cycle so that you can control your application and its data.
+
+Callbacks allow you to trigger logic before or after an alteration of an object's state.
+
 # the .find is like the params function in that it will find the message for the id that has been put into it, the params function is simply for whatever page it is on.
 
 @message.comments.find(1)
